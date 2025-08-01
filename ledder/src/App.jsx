@@ -7,8 +7,6 @@ import Cards from '../app/components/cards'
 import OverView from '../app/components/statsoverview'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <Hero/>
