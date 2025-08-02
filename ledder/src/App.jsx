@@ -5,13 +5,26 @@ import './App.css'
 import Hero from '../app/hero'
 import Cards from '../app/components/cards'
 import OverView from '../app/components/statsoverview'
+import ApplicationForm from '../app/components/application-form'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <Hero/>
-      <Cards/>
-      <OverView/>
+    <Router>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <>
+              <Hero/>
+              <Cards/>
+              <OverView/>
+            </>            
+          }/>
+        <Route path='/Application-form' element={<ApplicationForm/>}/>
+      </Routes>
+    </Router>
     </>
   )
 }

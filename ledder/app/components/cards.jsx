@@ -1,7 +1,7 @@
 const Cards = ()=> {
     return(
         <>
-            <div className="flex gap-2">
+            <div className="flex gap-2" p-15>
                 <div className="w-1/4 h-32 bg-blue-50 rounded-2xl">
                     <h6>Total applications</h6>
                     <span>2</span>
