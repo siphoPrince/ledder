@@ -23,8 +23,10 @@ const OverView = ({ applications }) => {
               className="shadow-lg w-4xl rounded p-4 flex items-center justify-between"
             >
               <div>
-              <h3 className="text-black font-semibold">{app.companyName}</h3>
-                <p className="text-grey-600 ">{app.jobTitle}</p>
+                <h3 className="text-black font-semibold">{app.companyName}</h3>
+                <p className="text-gray-600 ">{app.jobTitle}</p>
+                <p className="text-gray-500 italic">{app.notes}</p>
+                <p className="text-gray-500">{app.aboutCompany}</p>
                 
               </div>
               <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-2xl">
