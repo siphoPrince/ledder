@@ -18,6 +18,10 @@ const Cards = ()=> {
                     <h6>Accepted</h6>
                     <span className="text-yellow-500">1</span>
                 </div>
+                <div className="w-1/4 h-32 bg-red-500 rounded-2xl">
+                    <h6>Rejected</h6>
+                    <span className="text-grey-500">0</span>
+                </div>
             </div>
         </>
     );
