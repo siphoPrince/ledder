@@ -3,12 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { FaLongArrowAltLeft } from "react-icons/fa"
 import { FaBuilding } from "react-icons/fa"
 import { FaAddressBook } from "react-icons/fa"
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
 
 export default function ApplicationForm({onSubmit}){
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         companyName: "",
         contactPerson: "",
+        contactNumber: "",
+        companyEmail: "",
         jobTitle: "",
         notes: "",
         aboutCompany: "",
@@ -131,6 +135,34 @@ export default function ApplicationForm({onSubmit}){
                                 onChange={(e)=> handleInputChange("notes", e.target.value)}
                             />
                         </label>
+                        </div>
+
+                        {/* Contact information section */}
+                        <h3 className="text-sm font-semibold text-gray-700 mb-1">Company Information</h3>
+                        <div flex >
+                            <label className="flex items-center">
+                            <FaPhoneAlt className="text-4xl" />
+                            <span>Contact Number</span>
+                            <input
+                                className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+                                placeholder="Add Contact Numbers..."
+                                type="numbers"
+                                value={formData.contactNumber}
+                                onChange={(e)=> handleInputChange("contactNumber", e.target.value)}
+                                />
+                            </label>
+
+                            <label className="flex items-center">
+                            <MdEmail className="text-4xl"/>
+                                <span>Email</span>
+                                <input
+                                    className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+                                    placeholder="Enter Email..."
+                                    type="email"
+                                    value={formData.companyEmail}
+                                    onChange={(e)=> handleInputChange("companyEmail", e.target.value)}
+                                />
+                            </label>
                         </div>
                         <button type="submit" className="cursor-pointer w-50 bg-black text-white rounded">Submit Application</button>
                     </form>

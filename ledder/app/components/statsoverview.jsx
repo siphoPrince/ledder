@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom";
+import { FaBuilding } from "react-icons/fa"
+import { FaAddressBook } from "react-icons/fa"
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEditNote } from "react-icons/md";
 
 const OverView = ({ applications }) => {
   return (
@@ -23,9 +28,11 @@ const OverView = ({ applications }) => {
               className="shadow-lg w-4xl rounded p-4 flex items-center justify-between"
             >
               <div>
-                <h3 className="text-black font-semibold">{app.companyName}</h3>
-                <p className="text-gray-600 ">{app.jobTitle}</p>
-                <p className="text-gray-500 italic">{app.notes}</p>
+                <h3 className="text-black font-semibold">{app.jobTitle}</h3>
+                <p className="text-gray-600 flex flex-row items-center"><FaBuilding className="text-4xl text-black"/>{app.companyName}</p>
+                <p className="text-gray-600 flex flex-row items-center"><FaAddressBook className="text-4xl text-black"/>{app.contactPerson}</p>
+                <p className="text-gray-600 flex flex-row items-center"><MdEmail className="text-4xl text-black"/>{app.companyEmail}</p>
+                <p className="text-gray-500 italic flex flex-row items-centre"><MdEditNote className="text-4xl text-black"/>{app.notes}</p>
                 <p className="text-gray-500">{app.aboutCompany}</p>
                 
               </div>
