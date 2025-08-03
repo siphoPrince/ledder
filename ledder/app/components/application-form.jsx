@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaLongArrowAltLeft } from "react-icons/fa"
+import { FaBuilding } from "react-icons/fa"
+import { FaAddressBook } from "react-icons/fa"
 
 export default function ApplicationForm({onSubmit}){
     const navigate = useNavigate();
@@ -31,9 +34,10 @@ export default function ApplicationForm({onSubmit}){
             {/* Return button */}
                 <button
                     onClick={() => navigate("/")}
-                    className="text-white bg-black cursor-pointer w-32 py-2 px-4 shadow-lg rounded-xl"
+                    className="text-black flex flex-row items-center w-50 py-2 px-4 shadow-lg rounded-xl cursor-pointer"
                 >
-                    Return
+                    <FaLongArrowAltLeft className="text-black text-3xl"/>
+                    <span>Back to Dashboard</span>
                 </button>
 
                 {/* Heading */}
@@ -56,11 +60,12 @@ export default function ApplicationForm({onSubmit}){
                     <h3 className="text-sm font-semibold text-gray-700 mb-1">Company Information</h3>
                     <form className="space-y-2" onSubmit={handleSubmit}>
                         {/*company name section*/}
-                        <div className="flex flex-row gap-2">
-                            <label>
-                                Company Name *
+                        <div className="flex flex-row gap-1">
+                            <label className="flex flex-row items-centre">
+                            <FaBuilding className=" text-black text-4xl"/>
+                                <span>Company Name *</span>
                                 <input
-                                    className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                                    className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
                                     placeholder="Enter Company Name..."
                                     type="text"
                                     required
@@ -69,10 +74,11 @@ export default function ApplicationForm({onSubmit}){
                                     />
                             </label>
 
-                            <label>
-                                Contact Person *
+                            <label className="flex flex-row items-center">
+                                <FaAddressBook className="text-4xl"/>
+                                <span>Contact Person *</span>
                                 <input
-                                    className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                                    className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
                                     placeholder="Enter Contact Person"
                                     type="text"
                                     required
@@ -88,7 +94,7 @@ export default function ApplicationForm({onSubmit}){
                             About Company *
                         
                         <textarea
-                            className="flex flex-col gap-1.5 border border-gray-300 rounded-lg w-2xl p-3 h-30  focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                            className="flex flex-col gap-1.5 border border-gray-300 rounded-lg w-2xl p-3 h-30  focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
                             placeholder="Write something about the company..."
                             required
                             value={formData.aboutCompany}
@@ -103,7 +109,7 @@ export default function ApplicationForm({onSubmit}){
                             <label>
                                 job Title *
                                 <input
-                                    className=" flex flex-col gap-2 border border-gray-300 rounded-lg w-2xl p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                                    className=" flex flex-col gap-2 border border-gray-300 rounded-lg w-2xl p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
                                     placeholder="Enter Job Title"
                                     type="text"
                                     required
@@ -118,7 +124,7 @@ export default function ApplicationForm({onSubmit}){
                         <label>
                             Notes(optional)
                             <textarea
-                                className=" flex flex-col border border-gray-300 rounded-lg w-2xl h-28 p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                                className=" flex flex-col border border-gray-300 rounded-lg w-2xl h-28 p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
                                 placeholder="Enter any notes"
                                 type="text"
                                 value={formData.notes}
