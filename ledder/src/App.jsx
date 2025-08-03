@@ -9,6 +9,12 @@ import ApplicationForm from '../app/components/application-form'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
+  const [applications, setApplications] = useState([]);
+  // adding form
+  const AddApplication = (app) =>{
+    setApplications((prev)=> [...prev, app]);
+  };
+
   return (
     <>
     <Router>
@@ -19,10 +25,11 @@ function App() {
             <>
               <Hero/>
               <Cards/>
-              <OverView/>
+              <OverView applications={applications} />
             </>            
           }/>
-        <Route path='/Application-form' element={<ApplicationForm/>}/>
+        <Route path='/Application-form'
+          element={<ApplicationForm onSubmit={AddApplication} />}/>
       </Routes>
     </Router>
     </>

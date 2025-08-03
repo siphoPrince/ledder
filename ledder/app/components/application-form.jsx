@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ApplicationForm(){
+export default function ApplicationForm({onSubmit}){
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         companyName: "",
@@ -21,9 +21,9 @@ export default function ApplicationForm(){
     // when form is submitted
     const handleSubmit = (e)=>{
         e.preventDefault();
-        navigate("/")
+        onSubmit(formData);
+        navigate("/");
     };
-
     return(
         <>
             <div className="flex flex-col gap-6 p-6">
@@ -47,54 +47,57 @@ export default function ApplicationForm(){
                 <div className="shadow-lg rounded-lg p-5 bg-white">
                     <h5 className="font-semibold text-lg">Application Details</h5>
                     <small className="text-gray-500">
-                    Fill in all the relevant information about your job application
+                        Fill in all the relevant information about your job application
                     </small>
 
                 {/* Form detail */}
                 <div className="">
                     <h3>Company Information</h3>
                     <form className="flex flex-col gap-1" onSubmit={handleSubmit}>
-                    <label>
-                        Company Name*
-                        <input
-                            placeholder="Enter Company Name..."
-                            type="text"
-                            value={formData.companyName}
-                            onChange={(e) =>handleInputChange("companyName", e.target.value)}
+                        <label>
+                            Company Name*
+                            <input
+                                placeholder="Enter Company Name..."
+                                type="text"
+                                required
+                                value={formData.companyName}
+                                onChange={(e) =>handleInputChange("companyName", e.target.value)}
+                                />
+                        </label>
+
+                        <label>
+                            contactPerson*
+                            <input
+                                placeholder="Enter Contact Person"
+                                type="text"
+                                required
+                                value={formData.contactPerson}
+                                onChange={(e)=> handleInputChange("contactPerson", e.target.value)}
+                                />
+                        </label>
+
+                        <label>
+                            jobTitle*
+                            <input
+                                placeholder="Enter Job Title"
+                                type="text"
+                                required
+                                value={formData.jobTitle}
+                                onChange={(e)=> handleInputChange("jobTitle", e.target.value)}
                             />
-                    </label>
+                        </label>
 
-                    <label>
-                        contactPerson*
-                        <input
-                            placeholder="Enter Contact Person"
-                            type="text"
-                            value={formData.contactPerson}
-                            onChange={(e)=> handleInputChange("contactPerson", e.target.value)}
+                        <label>
+                            notes*
+                            <textarea
+                                placeholder="Enter any notes"
+                                type="text"
+                                required
+                                value={formData.notes}
+                                onChange={(e)=> handleInputChange("notes", e.target.value)}
                             />
-                    </label>
-
-                    <label>
-                        jobTitle*
-                        <input
-                            placeholder="Enter Job Title"
-                            type="text"
-                            value={formData.jobTitle}
-                            onChange={(e)=> handleInputChange("jobTitle", e.target.value)}
-                        />
-                    </label>
-
-                    <label>
-                        notes*
-                        <textarea
-                            placeholder="Enter any notes"
-                            type="text"
-                            value={formData.notes}
-                            onChange={(e)=> handleInputChange("notes", e.target.value)}
-                        />
-                    </label>
-
-                    <button type="submit">Submit</button>
+                        </label>
+                        <button type="submit">Submit</button>
                     </form>
                 </div>
                 </div>
@@ -102,7 +105,6 @@ export default function ApplicationForm(){
                 
             </div>
   </>
-
     );
 
 }
