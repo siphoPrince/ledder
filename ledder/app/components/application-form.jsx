@@ -34,11 +34,11 @@ export default function ApplicationForm({onSubmit}){
     };
     return(
         <>
-            <div className="flex flex-col gap-6 p-6">
+            <div className="flex flex-col gap-6 p-50">
             {/* Return button */}
                 <button
                     onClick={() => navigate("/")}
-                    className="text-black flex flex-row items-center w-50 py-2 px-4 shadow-lg rounded-xl cursor-pointer"
+                    className="text-black flex flex-row items-center border border-gray-300 w-50 py-2 px-4 shadow-lg rounded-xl cursor-pointer"
                 >
                     <FaLongArrowAltLeft className="text-black text-3xl"/>
                     <span>Back to Dashboard</span>
@@ -164,7 +164,7 @@ export default function ApplicationForm({onSubmit}){
                                 />
                             </label>
                         </div>
-                        <button type="submit" className="cursor-pointer w-50 bg-black text-white rounded">Submit Application</button>
+                        <button type="submit" className=" block cursor-pointer w-50 bg-black text-white rounded mt-2.5">Submit Application</button>
                     </form>
                 </div>
                 </div>

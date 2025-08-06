@@ -7,8 +7,9 @@ import { MdEditNote } from "react-icons/md";
 
 const OverView = ({ applications }) => {
   return (
-    <>
+    <>   
       <h2 className="text-lg font-bold mb-4">Your Applications</h2>
+      <div className="flex justify-center items-center h-100">
 
       {applications.length === 0 ? (
         <div className="p-4 text-gray-500 italic">
@@ -43,6 +44,7 @@ const OverView = ({ applications }) => {
           ))}
         </div>
       )}
+      </div>
     </>
   );
 };
