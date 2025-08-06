@@ -16,6 +16,8 @@ export default function ApplicationForm({onSubmit}){
         jobTitle: "",
         notes: "",
         aboutCompany: "",
+        dateTime: "",
+        status:""
     });
 
 
@@ -163,6 +165,29 @@ export default function ApplicationForm({onSubmit}){
                                     onChange={(e)=> handleInputChange("companyEmail", e.target.value)}
                                 />
                             </label>
+
+                            <div>
+                                <h3 className="text-sm font-semibold text-gray-700 mb-1">Company Information</h3>
+                                <label>
+                                    <h5>Current Status *</h5>
+                                    <select
+                                        className="border w-2xl cursor-pointer border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
+                                        value={formData.status}
+                                        onClick={(e)=> setFormData({...formData, status: e.target.value})}
+                                    >
+                                    <option value="" disabled>
+                                        Select Status
+                                    </option>
+                                        <option value="applied">Applied</option>
+                                        <option value="rejected">Rejected</option>
+                                        <option value="offer">Offer</option>
+                                        <option value="interview">Interview</option>
+                                    </select>
+                                </label>
+                            </div>
+                         
+
+                            
                         </div>
                         <button type="submit" className=" block cursor-pointer w-50 bg-black text-white rounded mt-2.5">Submit Application</button>
                     </form>

@@ -4,6 +4,7 @@ import { FaAddressBook } from "react-icons/fa"
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEditNote } from "react-icons/md";
+import { IoMdPerson } from "react-icons/io";
 
 const OverView = ({ applications }) => {
   return (
@@ -12,8 +13,10 @@ const OverView = ({ applications }) => {
       <div className="flex justify-center items-center h-100">
 
       {applications.length === 0 ? (
-        <div className="p-4 text-gray-500 italic">
-          No applications yet. Start by adding one!
+        <div className=" p-5 text-gray-500 italic flex flex-col items-center">
+        <FaBuilding className="text-6xl text-black"/>
+          <span>No applications yet. Start by adding one!</span>
+          <h4>Start tracking your job applications by adding your first one.</h4>
           <Link
             className="ml-2 bg-black text-white px-3 py-1 rounded-xl"
             to="/application-form"
@@ -31,7 +34,7 @@ const OverView = ({ applications }) => {
               <div>
                 <h3 className="text-black font-semibold">{app.jobTitle}</h3>
                 <p className="text-gray-600 flex flex-row items-center"><FaBuilding className="text-4xl text-black"/>{app.companyName}</p>
-                <p className="text-gray-600 flex flex-row items-center"><FaAddressBook className="text-4xl text-black"/>{app.contactPerson}</p>
+                <p className="text-gray-600 flex flex-row items-center"><IoMdPerson className="text-4xl text-black"/>{app.contactPerson}</p>
                 <p className="text-gray-600 flex flex-row items-center"><MdEmail className="text-4xl text-black"/>{app.companyEmail}</p>
                 <p className="text-gray-500 italic flex flex-row items-centre"><MdEditNote className="text-4xl text-black"/>{app.notes}</p>
                 <p className="text-gray-500">{app.aboutCompany}</p>
