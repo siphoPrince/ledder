@@ -9,7 +9,7 @@ import { IoMdPerson } from "react-icons/io";
 const OverView = ({ applications }) => {
   return (
     <>   
-      <h2 className="text-lg font-bold mb-4">Your Applications</h2>
+      <h2 className="grid grid-cols-1 md:grid-cols-2 text-lg font-bold mb-4">Your Applications</h2>
       <div className="flex justify-center items-center h-100">
 
       {applications.length === 0 ? (
@@ -25,7 +25,7 @@ const OverView = ({ applications }) => {
           </Link>
         </div>
       ) : (
-        <div className="">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-5xl">
           {applications.map((app, i) => (
             <div
               key={i}
@@ -41,7 +41,7 @@ const OverView = ({ applications }) => {
                 
               </div>
               <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-2xl">
-                {app.contactPerson}
+                {app.status}
               </span>
             </div>
           ))}
