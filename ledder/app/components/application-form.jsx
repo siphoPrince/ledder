@@ -173,7 +173,7 @@ export default function ApplicationForm({onSubmit}){
                                     <select
                                         className="border w-2xl cursor-pointer border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-200"
                                         value={formData.status}
-                                        onClick={(e)=> setFormData({...formData, status: e.target.value})}
+                                        onChange={(e)=> setFormData({...formData, status: e.target.value})}
                                     >
                                     <option value="" disabled>
                                         Select Status
