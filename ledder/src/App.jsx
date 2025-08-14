@@ -7,6 +7,7 @@ import Cards from '../app/components/cards'
 import OverView from '../app/components/statsoverview'
 import ApplicationForm from '../app/components/application-form'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Login from '../app/login'
 
 function App() {
   const [applications, setApplications] = useState([]);
@@ -38,7 +39,11 @@ function App() {
           }/>
         <Route path='/Application-form'
           element={<ApplicationForm onSubmit={AddApplication} />}/>
+          
+        <Route path='/Login' element={<Login/>}/>
+
       </Routes>
+      
     </Router>
     </>
   )
