@@ -1,5 +1,5 @@
 const Cards = ({ applications })=> {
-    const total = applications.total;
+    const total = applications.length;
     const pending = applications.filter(app => app.status === "pending").length;
     const interviews = applications.filter(app => app.status === "interview").length;
     const accepted = applications.filter(app => app.status === "offer").length;

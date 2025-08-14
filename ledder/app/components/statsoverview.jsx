@@ -7,6 +7,7 @@ import { MdEditNote } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";
 
 const OverView = ({ applications }) => {
+  
   return (
     <>   
       <h2 className="text-lg font-bold mb-4">Your Applications</h2>
@@ -40,7 +41,16 @@ const OverView = ({ applications }) => {
                   <p className="text-gray-500 text-xs sm:text-sm">{app.aboutCompany}</p>
                   
                 </div>
-                <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-2xl mt-2 sm:mt-0 self-start">
+
+                <span className={` text-white text-xs px-2 py-1 rounded-2xl mt-2 sm:mt-0 self-start
+                  ${
+                  app.status === 'rejected' ? 'bg-gray-500':
+                  app.status === 'pending' ? 'bg-red-500' :
+                  app.status === 'accepted' ? 'bg-yellow-500' :
+                  app.status === 'interview' ? 'bg-pink-500' :
+                  app.status === 'offer' ? 'bg-yellow-500':
+                    'bg-blue-500'
+                }`}>
                   {app.status}
                 </span>
               </div>

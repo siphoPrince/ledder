@@ -189,9 +189,9 @@ export default function ApplicationForm({onSubmit}){
                                     <option value="" disabled>
                                         Select Status
                                     </option>
-                                        <option value="applied">Applied</option>
                                         <option value="rejected">Rejected</option>
-                                        <option value="offer">Offer</option>
+                                        <option value="offer" className="bg-green-500">Offer</option>
+                                        <option value="pending">Pending</option>
                                         <option value="interview">Interview</option>
                                     </select>
                                 </label>
