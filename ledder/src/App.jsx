@@ -28,7 +28,7 @@ function App() {
                   <Hero/>
                 </section>
                 <section className='mt-10'>
-                  <Cards/>
+                  <Cards applications={applications}/>
                 </section>
                 <section className='mt-10'>
                   <OverView applications={applications} />
