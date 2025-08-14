@@ -23,9 +23,17 @@ function App() {
           path='/'
           element={
             <>
-              <Hero/>
-              <Cards/>
-              <OverView applications={applications} />
+              <div className="w-full px-4">
+                <section className='mt-6'>
+                  <Hero/>
+                </section>
+                <section className='mt-10'>
+                  <Cards/>
+                </section>
+                <section className='mt-10'>
+                  <OverView applications={applications} />
+                </section>
+              </div>
             </>            
           }/>
         <Route path='/Application-form'

@@ -32,6 +32,17 @@ export default function ApplicationForm({onSubmit}){
     const handleSubmit = (e)=>{
         e.preventDefault();
         onSubmit(formData);
+        setFormData({
+            companyName: "",
+            contactPerson: "",
+            contactNumber: "",
+            companyEmail: "",
+            jobTitle: "",
+            notes: "",
+            aboutCompany: "",
+            dateTime: "",
+            status: ""
+          });
         navigate("/");
     };
     return(
