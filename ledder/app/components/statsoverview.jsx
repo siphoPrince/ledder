@@ -36,7 +36,10 @@ const OverView = ({ applications }) => {
                   <h3 className="text-black font-semibold">{app.jobTitle}</h3>
                   <p className="text-gray-600 flex flex-row items-center text-xs sm:text-sm"><FaBuilding className="sm:text-2xl text-black"/>{app.companyName}</p>
                   <p className="text-gray-600 flex flex-row items-center text-xs sm:text-sm"><IoMdPerson className="sm:text-2xl text-black"/>{app.contactPerson}</p>
+                  <div className="flex flex-row gap-40">
+                  <p className="text-gray-600 flex flex-row items-center text-xs sm:text-sm"><FaPhoneAlt className="sm:text-2xl text-black"/>{app.contactNumber}</p>
                   <p className="text-gray-600 flex flex-row items-center text-xs sm:text-sm"><MdEmail className="sm:text-2xl text-black"/>{app.companyEmail}</p>
+                  </div>
                   <p className="text-gray-500 italic flex flex-row items-centre text-xs sm:text-sm"><MdEditNote className="sm:text-2xl text-black"/>{app.notes}</p>
                   <p className="text-gray-500 text-xs sm:text-sm">{app.aboutCompany}</p>
                   
