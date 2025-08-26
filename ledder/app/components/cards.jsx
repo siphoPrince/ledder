@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 const Cards = ({ applications })=> {
     const total = applications.length;
     const pending = applications.filter(app => app.status === "pending").length;
@@ -8,10 +11,12 @@ const Cards = ({ applications })=> {
     return(
         <>
         <div className="flex flex-wrap gap-4 justify-between">
-            <div className="flex-1 min-w-[150px] h-32 bg-blue-200 rounded-2xl p-4">
-                <h6>Total applications</h6>
-                <span>{total}</span>
-            </div>
+            <Link to="/dashboard">
+                <div className="flex-1 min-w-[150px] h-32 cursor-pointer bg-blue-200 rounded-2xl p-4">
+                        <h6>Total applications - <span className="italic text-sm">DashBoard</span></h6>
+                        <span>{total}</span>
+                    </div>
+            </Link>
             <div className="flex-1 min-w-[150px] h-32 bg-red-200 rounded-2xl p-4">
                 <h6>Pending</h6>
                 <span className="text-red-500">{pending}</span>

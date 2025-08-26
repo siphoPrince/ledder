@@ -14,7 +14,7 @@ const Login = () => {
         </div>
 
         {/* Sign In Form */}
-        <form className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-lg md:max-w-xl">
+        <form action="login" className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-lg md:max-w-xl">
           <h1 className="mb-6 text-2xl font-bold text-center">Sign In</h1>
           <div className="space-y-4">
             <input

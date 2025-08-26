@@ -8,6 +8,7 @@ import OverView from '../app/components/statsoverview'
 import ApplicationForm from '../app/components/application-form'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from '../app/login/login'
+import DashBoard from '../app/pages/dashboard'
 
 
 
@@ -43,6 +44,9 @@ function App() {
           element={<ApplicationForm onSubmit={AddApplication} />}/>
           
         <Route path='/Login' element={<Login/>}/>
+
+        <Route path='/dashboard'
+          element={<DashBoard />}/>
 
       </Routes>
       
