@@ -26,11 +26,13 @@ describe("hide logo on form", ()=>{
     })
 })
 
-// testing out the application inputs
-describe('application inputs', ()=>{
+// testing out the application inputs positive values
+describe('application inputs correct info', ()=>{
     it.only("should enter input for company  information section", ()=>{
         cy.visit('/application-form')
-        cy.contains('Enter Company Name...').parent().find('input').type('Acer inc')
+        cy.contains('Company Name *').find('input').type('Acer inc')
+        cy.contains('Contact Person *').find('input').type('Paul')
+        cy.contains('About Company *').find('textarea').type('This is a hardware and software company')
     })
 })
 
