@@ -10,3 +10,5 @@ db.run(`CREATE TABLE IF NOT EXISTS users (
     email TEXT UNIQUE,
     password TEXT
     )`);
+
+module.exports = db;

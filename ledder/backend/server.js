@@ -3,13 +3,17 @@ const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
 const authRoutes = require("./src/routes/auth");
+const initializepassport = require('./src/passportConfig');
 
-
+initializepassport(passport)
 const app = express();
 
 // middleware
-app.use(cors({origin: "http://localhost:5173/", Credential: true}));
-app.use(express.json);
+app.use(cors({
+    origin: "http://localhost:5173",
+    credential: true
+}));
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // sessions
