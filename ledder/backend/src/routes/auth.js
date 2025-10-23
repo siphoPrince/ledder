@@ -17,11 +17,24 @@ router.post('/register', async (req, res) =>{
   });
 });
 
+//login
+router.post('login', (req, res, next) =>{
+  passport.authenticate('local', (err, user, info) =>{
+    if (err) return next(err);
+    if (!user) return res.status(400).json({message: info.message});
 
+    req.logIn(user,(err)=>{
+      if(err) return next(err);
+      res.json({message:'Login sucessful!', user: {id: user.id, email: user.email}})
+    });
+  })(req, res, next);
+});
 
-
-router.get('/login', function(req, res, next) {
-  res.render('login');
+//logout
+router.post('/logout', (req, res) =>{
+  req.logout(()=>{
+    res.json({ message: 'Logged out sucessfully'})
+  });
 });
 
 module.exports = router;
