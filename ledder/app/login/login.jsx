@@ -1,4 +1,22 @@
+import { useState } from "react";
+import axios from "axios";
+
 const Login = () => {
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [message, setMessage] = useState(""); 
+
+const handleSubmit = async (e) =>{
+  e.preventDefault()
+
+  try{
+    const res =await axios.post("http://localhost:3000/api/auth/login", { email, password }, { withCredentials: true })
+    setMessage(res.data.message);
+  } catch(err){
+    setMessage(err.response?.data?.message || "Login failed");
+  }
+};
+
   return (
     <>
       <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
@@ -14,7 +32,7 @@ const Login = () => {
         </div>
 
         {/* Sign In Form */}
-        <form action="login" className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-lg md:max-w-xl">
+        <form onSubmit={handleSubmit} className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-lg md:max-w-xl">
           <h1 className="mb-6 text-2xl font-bold text-center">Sign In</h1>
           <div className="space-y-4">
             <input

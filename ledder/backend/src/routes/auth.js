@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const db = require('./db');
+const db = require('../db');
 
 //register
 router.post('/register', async (req, res) =>{
