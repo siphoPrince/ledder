@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
 
 
 const Login = () => {
@@ -8,12 +9,18 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [message, setMessage] = useState(""); 
 
+const navigate = useNavigate();
+
 const handleSubmit = async (e) =>{
   e.preventDefault()
 
   try{
     const res =await axios.post("http://localhost:3000/api/auth/login", { email, password }, { withCredentials: true })
     setMessage(res.data.message);
+
+    if (res.data.message === "Login successful"){
+      navigate("/");
+    }
   } catch(err){
     setMessage(err.response?.data?.message || "Login failed");
   }
@@ -43,11 +50,15 @@ const handleSubmit = async (e) =>{
               placeholder="Enter Email..."
               className="w-full rounded-md border border-gray-300 p-2 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               placeholder="Enter Password..."
               className="w-full rounded-md border border-gray-300 p-2 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
               type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button
@@ -56,6 +67,9 @@ const handleSubmit = async (e) =>{
           >
             Sign In
           </button>
+          {message && (
+            <p className="mt-4 text-center text-sm text-gray-600">{message}</p>
+          )}
         </form>
       </div>
     </>
