@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 const Login = () => {
 const [email, setEmail] = useState("");
@@ -25,9 +27,11 @@ const handleSubmit = async (e) =>{
           <h2 className="text-2xl font-bold md:text-3xl">Welcome back Sipho!</h2>
           <span className="mt-2.5 block text-sm md:text-base">
             Don't have an account?{" "}
-            <a href="#" className="font-bold underline transition duration-300 hover:text-green-700">
+            <Link
+            to="/register"
+            className="font-bold underline transition duration-300 hover:text-green-700">
               Sign Up
-            </a>
+            </Link>
           </span>
         </div>
 
