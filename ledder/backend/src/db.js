@@ -24,7 +24,7 @@ db.run(`CREATE TABLE IF NOT EXISTS applications (
     aboutCompany TEXT,
     dateTime TEXT,
     status TEXT,
-    FOREGIN KEY(userId) REFERENCES users(id)
+    FOREIGN KEY(userId) REFERENCES users(id)
     )`)
 
 module.exports = db;

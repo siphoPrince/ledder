@@ -29,21 +29,49 @@ export default function ApplicationForm({onSubmit}){
     }
 
     // when form is submitted
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
-        onSubmit(formData);
-        setFormData({
-            companyName: "",
-            contactPerson: "",
-            contactNumber: "",
-            companyEmail: "",
-            jobTitle: "",
-            notes: "",
-            aboutCompany: "",
-            dateTime: "",
-            status: ""
-          });
-        navigate("/");
+        try{
+            const response = await fetch("http://localhost:3000/api/applications",{
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
+
+                },
+                credentials: "include",
+                body: JSON.stringify(formData),
+
+            });
+
+            if(response.ok){
+                const newApp = await response.json();
+                console.log("Application saved:", newApp);
+                if(onSubmit) onSubmit(newApp);
+                alert("Application sucessfully added");
+
+                // reset form
+                setFormData({
+                    companyName: "",
+                    contactPerson: "",
+                    contactNumber: "",
+                    companyEmail: "",
+                    jobTitle: "",
+                    notes: "",
+                    aboutCompany: "",
+                    dateTime: "",
+                    status: ""
+                });
+                navigate("/");
+            } else{
+                const error = await response.json();
+                alert("Failed to save:", + error.error);
+            }
+        }catch(err){
+            console.error("Error submitting application:", err);
+            alert("Something went wrong while saving your application.");
+        }
+
+        
     };
     return(
         <>

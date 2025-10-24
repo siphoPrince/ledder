@@ -3,6 +3,7 @@ const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
 const authRoutes = require("./src/routes/auth");
+const applicationsRoutes = require("./src/routes/applications");
 const initializepassport = require('./src/passportConfig');
 
 initializepassport(passport)
@@ -32,6 +33,7 @@ app.use(passport.session());
 
 // routes
 app.use("/api/auth",authRoutes);
+app.use("/api/applications", applicationsRoutes);
 
 // start server
 const port = 3000;

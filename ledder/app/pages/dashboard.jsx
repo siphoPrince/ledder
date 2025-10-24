@@ -29,7 +29,7 @@ const DashBoard = () => {
             key={index}
             className="grid grid-cols-4 gap-4 p-3 border-b border-gray-600 hover:bg-amber-800 rounded-md"
           >
-            <div>1{item.id}</div>
+            <div>{item.id}</div>
             <div>{item.name}</div>
             <div>{item.amount}</div>
             <div>{item.date}</div>
