@@ -11,4 +11,20 @@ db.run(`CREATE TABLE IF NOT EXISTS users (
     password TEXT
     )`);
 
+// application table
+db.run(`CREATE TABLE IF NOT EXISTS applications (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER,
+    companyName TEXT,
+    contactPerson TEXT,
+    contactNumber TEXT,
+    companyEmail TEXT,
+    jobTitle TEXT,
+    notes TEXT,
+    aboutCompany TEXT,
+    dateTime TEXT,
+    status TEXT,
+    FOREGIN KEY(userId) REFERENCES users(id)
+    )`)
+
 module.exports = db;

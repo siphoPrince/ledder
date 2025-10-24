@@ -11,11 +11,11 @@ const DashBoard = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-amber-900 min-h-screen text-white">
-      <h1 className="text-2xl font-bold mb-6">Ledger Records</h1>
+    <div className="p-6 min-h-screen text-black">
+      <h1 className="text-2xl font-bold mb-6">DashBoard</h1>
 
       {/* Header Row */}
-      <div className="grid grid-cols-4 gap-4 font-bold bg-amber-700 p-3 rounded-md">
+      <div className="grid grid-cols-4 gap-4 font-bold bg-gray-200 p-3 rounded-md">
         <div>ID</div>
         <div>Name</div>
         <div>Amount</div>
@@ -29,7 +29,7 @@ const DashBoard = () => {
             key={index}
             className="grid grid-cols-4 gap-4 p-3 border-b border-gray-600 hover:bg-amber-800 rounded-md"
           >
-            <div>{item.id}</div>
+            <div>1{item.id}</div>
             <div>{item.name}</div>
             <div>{item.amount}</div>
             <div>{item.date}</div>
