@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaRegEdit } from "react-icons/fa";
 
 const DashBoard = () => {
   const [applications, setApplications] = useState([]);
@@ -34,13 +35,16 @@ const DashBoard = () => {
         applications.map((item, index) => (
           <div
             key={index}
-            className="grid grid-cols-6 gap-6 p-3 border-b border-gray-600 hover:bg-amber-800 rounded-md"
+            className="grid grid-cols-6 gap-6 p-3 border-b border-gray-600 hover:bg-gray-200 rounded-md"
           >
             <div>{item.id}</div>
             <div>{item.companyName}</div>
             <div>{item.status}</div>
             <div>{item.contactPerson}</div>
             <div>{item.contactNumber}</div>
+            <div>
+              <button><FaRegEdit className="bg-blue-600 cursor-pointer text-black px-3 py-1 rounded hover:bg-blue-700 text-2xl"/></button>
+            </div>
           </div>
         ))
       ) : (
