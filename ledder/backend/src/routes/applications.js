@@ -59,6 +59,20 @@ router.put("/:id", checkAuthenticated, (req, res) =>{
     
 });
 
+// Delete application
+router.delete("/:id", checkAuthenticated, (req, res) =>{
+    const {id} = req.params;
+
+    const stmt = db.prepare("DELETE FROM applications WHERE id = ? AND userId = ?");
+    stmt.run(id, req.user.id, function(err){
+        if(err) return res.status(500).json({error: err.message});
+        if(this.changes === 0) return  res.status(404).json({error: "Application not found"});
+        res.json({message:"Application Successfully Deleted!"});
+    });
+    stmt.finalize();
+
+})
+
 // Add new application
 router.post("/", checkAuthenticated, (req, res) => {
     const data = req.body;
