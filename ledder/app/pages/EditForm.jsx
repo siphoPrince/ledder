@@ -53,6 +53,25 @@ const EditForm = ()=>{
         .catch((err) => console.error(err));
     };
 
+    // delete a row
+    const handleDelete = ()=>{
+        if(!window.confirm("Are you sure you want to Delete?")) return;
+
+        fetch(`http://localhost:3000/api/applications/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+        })
+        .then((res) => {
+            if (!res.ok) throw new Error("failed to Delete application");
+            return res.json();
+        })
+        .then(()=>{
+            alert("Application Successfully Deleted!");
+            navigate("/dashBoard")
+        })
+        .catch((err) => console.error(err));
+    }
+
     return(
         <div className="p-6 max-w-xl mx-auto text-black">
         <h1 className="text-2xl font-bold mb-6">Edit Application</h1>
@@ -103,13 +122,22 @@ const EditForm = ()=>{
                 <option value="Offer">Offer</option>
             </select>
             </div>
-
+            <div className="flex gap-4 ml-6"> 
             <button
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
             Save Changes
             </button>
+
+            <button
+            type="button"
+            onClick={handleDelete}
+            className="bg-purple-600 text-white px-4 pl-4 py-2 rounded hover:bg-red-700"
+            >            
+            Delete
+            </button>
+            </div>
         </form>
         </div>
     );

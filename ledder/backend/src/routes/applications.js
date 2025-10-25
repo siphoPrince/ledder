@@ -17,10 +17,10 @@ router.get("/", checkAuthenticated, (req, res) => {
 });
 
 // get single id from applications
-router.put("/:id", checkAuthenticated, (req, res) =>{
+router.get("/:id", checkAuthenticated, (req, res) =>{
     db.get(
         "SELECT * FROM applications WHERE id = ? and userId = ?",
-        [req.params.id, res.user.id],
+        [req.params.id, req.user.id],
         (err, row) => {
             if (err) return res.status(500).json({error: err.message});
             if (!row) return res.status(404).json({error: "Application not found"});
@@ -30,7 +30,7 @@ router.put("/:id", checkAuthenticated, (req, res) =>{
 });
 
 // update application
-router.put("/:id", checkAuthenticated, (res, req) =>{
+router.put("/:id", checkAuthenticated, (req, res) =>{
     const data = req.body;
 
     const stmt = db.prepare(
