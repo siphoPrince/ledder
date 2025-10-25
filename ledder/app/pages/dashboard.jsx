@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 
 const DashBoard = () => {
-  const [records, setRecords] = useState([]);
+  const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/records") // your backend endpoint
-      .then((res) => res.json())
-      .then((data) => setRecords(data))
+    fetch("http://localhost:3000/api/applications",{
+      credentials: "include"
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to  fetch applications");
+        return  res.json();
+      })
+      .then((data) => setApplications(data))
       .catch((err) => console.error(err));
   }, []);
 
@@ -15,24 +20,27 @@ const DashBoard = () => {
       <h1 className="text-2xl font-bold mb-6">DashBoard</h1>
 
       {/* Header Row */}
-      <div className="grid grid-cols-4 gap-4 font-bold bg-gray-200 p-3 rounded-md">
+      <div className="grid grid-cols-6 gap-6 font-bold bg-gray-200 p-3 rounded-md">
         <div>ID</div>
-        <div>Name</div>
-        <div>Amount</div>
-        <div>Date</div>
+        <div>Company Name</div>
+        <div>Status</div>
+        <div>Contact Person</div>
+        <div>Contact number</div>
+        <div>Edit</div>
       </div>
 
       {/* Data Rows */}
-      {records.length > 0 ? (
-        records.map((item, index) => (
+      {applications.length > 0 ? (
+        applications.map((item, index) => (
           <div
             key={index}
-            className="grid grid-cols-4 gap-4 p-3 border-b border-gray-600 hover:bg-amber-800 rounded-md"
+            className="grid grid-cols-6 gap-6 p-3 border-b border-gray-600 hover:bg-amber-800 rounded-md"
           >
             <div>{item.id}</div>
-            <div>{item.name}</div>
-            <div>{item.amount}</div>
-            <div>{item.date}</div>
+            <div>{item.companyName}</div>
+            <div>{item.status}</div>
+            <div>{item.contactPerson}</div>
+            <div>{item.contactNumber}</div>
           </div>
         ))
       ) : (
