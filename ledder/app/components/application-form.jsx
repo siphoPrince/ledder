@@ -87,6 +87,7 @@ export default function ApplicationForm({onSubmit}){
                     <FaLongArrowAltLeft className="text-black text-3xl"/>
                     <span>Back to Dashboard</span>
                 </button>
+                <LogoutButton/>
 
                 {/* Heading */}
                 <div className="space-y-1">
