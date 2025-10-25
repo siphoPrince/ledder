@@ -16,6 +16,49 @@ router.get("/", checkAuthenticated, (req, res) => {
     });
 });
 
+// get single id from applications
+router.put("/:id", checkAuthenticated, (req, res) =>{
+    db.get(
+        "SELECT * FROM applications WHERE id = ? and userId = ?",
+        [req.params.id, res.user.id],
+        (err, row) => {
+            if (err) return res.status(500).json({error: err.message});
+            if (!row) return res.status(404).json({error: "Application not found"});
+            res.json(row);
+        }
+    )
+});
+
+// update application
+router.put("/:id", checkAuthenticated, (res, req) =>{
+    const data = req.body;
+
+    const stmt = db.prepare(
+        `UPDATE applications
+        SET companyName = ?, contactPerson = ?, contactNumber = ?, companyEmail = ?, jobTitle = ?, notes = ?, aboutCompany = ?, status = ?
+        WHERE id = ? AND userId = ?`
+    );
+
+    stmt.run(
+        data.companyName,
+        data.contactPerson,
+        data.contactNumber,
+        data.companyEmail,
+        data.jobTitle,
+        data.notes,
+        data.aboutCompany,
+        data.status,
+        req.params.id,
+        req.user.id,
+        function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: "Application updated successfully" });
+        }
+    );
+    stmt.finalize();
+    
+});
+
 // Add new application
 router.post("/", checkAuthenticated, (req, res) => {
     const data = req.body;

@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Hero from '../app/hero'
 import Cards from '../app/components/cards'
@@ -10,6 +8,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from '../app/login/login'
 import DashBoard from '../app/pages/dashboard'
 import Register from '../app/register/register'
+import EditForm from '../app/pages/EditForm'
+
 
 
 
@@ -46,9 +46,8 @@ function App() {
           
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Register' element={<Register/>}/>
-
-        <Route path='/dashboard'
-          element={<DashBoard />}/>
+        <Route path='/dashboard'element={<DashBoard />}/>
+        <Route path='/edit/:id' element={<EditForm/>}/>
 
       </Routes>
       

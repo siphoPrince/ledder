@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
+import { Navigate } from "react-router-dom";
 
 const DashBoard = () => {
   const [applications, setApplications] = useState([]);
@@ -43,7 +44,9 @@ const DashBoard = () => {
             <div>{item.contactPerson}</div>
             <div>{item.contactNumber}</div>
             <div>
-              <button><FaRegEdit className="bg-blue-600 cursor-pointer text-black px-3 py-1 rounded hover:bg-blue-700 text-2xl"/></button>
+              <button
+                onChange={()=> Navigate(`/edit/${item.id}`)}
+              ><FaRegEdit className="bg-blue-600 cursor-pointer text-black px-3 py-1 rounded hover:bg-blue-700 text-2xl"/></button>
             </div>
           </div>
         ))
