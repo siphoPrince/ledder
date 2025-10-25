@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { FaBuilding } from "react-icons/fa"
 import { FaAddressBook } from "react-icons/fa"
 import { MdEmail } from "react-icons/md";
@@ -6,7 +7,23 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEditNote } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";
 
-const OverView = ({ applications }) => {
+const OverView = () => {
+  const [applications, setApplications] = useState([]);
+
+  //fetch data to overview
+      useEffect(()=>{
+          fetch("http://localhost:3000/api/applications", {
+              credentials: "include"
+          })
+          .then((res)=> res.json())
+          .then((data) => setApplications(data))
+          .catch((err) => console.error(err));
+      },[]);
+  
+      const handleNewApplication = (newApp) =>{
+          setApplications((prev) => [...prev, newApp]);
+      };
+  
   
   return (
     <>   

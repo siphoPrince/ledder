@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLongArrowAltLeft } from "react-icons/fa"
 import { FaBuilding } from "react-icons/fa"
 import { FaAddressBook } from "react-icons/fa"
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
+import OverView from "./statsoverview";
 
 export default function ApplicationForm({onSubmit}){
     const navigate = useNavigate();
@@ -61,7 +62,8 @@ export default function ApplicationForm({onSubmit}){
                     dateTime: "",
                     status: ""
                 });
-                navigate("/");
+                navigate("/")
+                
             } else{
                 const error = await response.json();
                 alert("Failed to save:", + error.error);
@@ -75,6 +77,7 @@ export default function ApplicationForm({onSubmit}){
     };
     return(
         <>
+            
             <div className="flex flex-col gap-6 p-50">
             {/* Return button */}
                 <button
@@ -223,17 +226,13 @@ export default function ApplicationForm({onSubmit}){
                                         <option value="interview">Interview</option>
                                     </select>
                                 </label>
-                            </div>
-                         
-
-                            
+                            </div>                            
                         </div>
                         <button type="submit" className=" block cursor-pointer w-50 bg-black text-white rounded mt-2.5">Submit Application</button>
                     </form>
                 </div>
                 </div>
-
-                
+    
             </div>
   </>
     );
