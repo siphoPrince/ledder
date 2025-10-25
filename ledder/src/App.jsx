@@ -32,9 +32,7 @@ function App() {
                 <section className='mt-6'>
                   <Hero/>
                 </section>
-                <section className='mt-10'>
-                  <Cards applications={applications}/>
-                </section>
+                
                 <section className='mt-10'>
                   <OverView applications={applications} />
                 </section>

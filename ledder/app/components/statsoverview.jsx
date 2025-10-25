@@ -6,27 +6,35 @@ import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEditNote } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";
+import Cards from "./cards";
 
 const OverView = () => {
   const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //fetch data to overview
-      useEffect(()=>{
-          fetch("http://localhost:3000/api/applications", {
-              credentials: "include"
-          })
-          .then((res)=> res.json())
-          .then((data) => setApplications(data))
-          .catch((err) => console.error(err));
-      },[]);
-  
-      const handleNewApplication = (newApp) =>{
-          setApplications((prev) => [...prev, newApp]);
-      };
+      useEffect(() =>{
+        const fetchApplications = async () =>{
+          try{
+            const res = await fetch("http://localhost:3000/api/applications",
+              {credentials: "include"})
+              const data = await res.json();
+              setApplications(data);
+          } catch(err){
+            console.error(err);
+          } finally {
+            setLoading(false)
+          }
+        };
+        fetchApplications();
+      }, []);
+
+      if (loading) return <div>Loading Your Application...</div>
   
   
   return (
     <>   
+      <Cards applications={applications}/>
       <h2 className="text-lg font-bold mb-4">Your Applications</h2>
 
       {applications.length === 0 ? (
