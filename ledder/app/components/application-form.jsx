@@ -6,6 +6,7 @@ import { FaAddressBook } from "react-icons/fa"
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import OverView from "./statsoverview";
+import LogoutButton from "./logout/logout";
 
 export default function ApplicationForm({onSubmit}){
     const navigate = useNavigate();
@@ -80,6 +81,7 @@ export default function ApplicationForm({onSubmit}){
             
             <div className="flex flex-col gap-6 p-50">
             {/* Return button */}
+            <div className="flex items-center justify-between w-full">
                 <button
                     onClick={() => navigate("/")}
                     className="text-black flex flex-row items-center border border-gray-300 w-50 py-2 px-4 shadow-lg rounded-xl cursor-pointer"
@@ -87,7 +89,13 @@ export default function ApplicationForm({onSubmit}){
                     <FaLongArrowAltLeft className="text-black text-3xl"/>
                     <span>Back to Dashboard</span>
                 </button>
-                <LogoutButton/>
+                <button>
+                    <LogoutButton
+                    className="text-black flex flex-row items-center border border-gray-300 w-50 py-2 px-4 shadow-lg rounded-xl cursor-pointer"
+                    />
+                </button>
+                </div>
+                
 
                 {/* Heading */}
                 <div className="space-y-1">
@@ -184,7 +192,7 @@ export default function ApplicationForm({onSubmit}){
 
                         {/* Contact information section */}
                         <h3 className="text-sm font-semibold text-gray-700 mb-1">Company Information</h3>
-                        <div flex >
+                        <div>
                             <label className="flex items-center">
                             <FaPhoneAlt className="text-4xl" />
                             <span>Contact Number</span>

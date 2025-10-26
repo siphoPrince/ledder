@@ -11,7 +11,7 @@ const LogoutButton = () =>{
                 {},
                 {withCredentials: true}
             );
-            navigate("login");
+            navigate("/login");
         } catch(err){
             console.error("Logout failed", err);
         }
@@ -20,7 +20,7 @@ const LogoutButton = () =>{
     return(
         <button
         onClick={handleLogout}
-        className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
+        className="px-4 py-2 rounded-lg bg-red-200 text-brown-200 hover:bg-red-600 transition cursor-pointer"
         >
         Logout
         </button>
