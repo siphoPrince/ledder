@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "../components/logout/logout";
+import { Link } from "react-router-dom";
 
 const DashBoard = () => {
   const [applications, setApplications] = useState([]);
@@ -20,7 +22,17 @@ const DashBoard = () => {
 
   return (
     <div className="p-6 min-h-screen text-black">
+      <Link
+      to="/"
+      className="bg-gray-200 rounded "
+      >
+      Back
+      </Link>
+      <div className="display flex justify-between items-centre">
       <h1 className="text-2xl font-bold mb-6">DashBoard</h1>
+      {/* Logout*/}
+      <LogoutButton/>
+      </div>
 
       {/* Header Row */}
       <div className="grid grid-cols-6 gap-6 font-bold bg-gray-200 p-3 rounded-md">

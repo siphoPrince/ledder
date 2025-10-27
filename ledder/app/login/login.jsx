@@ -18,8 +18,9 @@ const handleSubmit = async (e) =>{
     const res =await axios.post("http://localhost:3000/api/auth/login", { email, password }, { withCredentials: true })
     setMessage(res.data.message);
 
-    if (res.data.message === "Login successful"){
-      navigate("/");
+    if (res.data.user){
+      localStorage.setItem("users", JSON.stringify(res.data.user));
+      navigate("/")
     }
   } catch(err){
     setMessage(err.response?.data?.message || "Login failed");

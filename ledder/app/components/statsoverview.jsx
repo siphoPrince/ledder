@@ -7,6 +7,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEditNote } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";
 import Cards from "./cards";
+import LogoutButton from "./logout/logout";
 
 const OverView = () => {
   const [applications, setApplications] = useState([]);
@@ -48,6 +49,7 @@ const OverView = () => {
           >
             Add Application
           </Link>
+          
         </div>
       ) : (
         <section className="w-full flex mt-6 ">
